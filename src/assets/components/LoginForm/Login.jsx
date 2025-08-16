@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (numberOfProducts) => {
   const correctUserName = "Dric";
   const correctPassword = "password";
   const [userName, setUserName] = useState("");
@@ -19,7 +19,13 @@ const Login = () => {
     e.preventDefault();
     if (userName && password) {
       if (userName === correctUserName && password === correctPassword) {
-        navigate("/products", { state: { name: userName, pwd: password } });
+        navigate("/products", {
+          state: {
+            name: userName,
+            pwd: password,
+            numberOfProducts: numberOfProducts,
+          },
+        });
       } else {
         alert("Les identifiants sont incorrects !");
       }
@@ -29,7 +35,7 @@ const Login = () => {
   };
   return (
     <div className="flex flex-col gap-10 w-full h-screen justify-center items-center">
-      <div className="bg-white flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-4xl h-auto md:h-[480px] rounded-lg">
+      <div className="bg-white flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-4xl h-auto md:h-[360px] rounded-lg">
         <div className="w-full md:w-1/2">
           <form
             className="flex flex-col gap-10 text-base-300 justify-center items-center p-5"
@@ -64,7 +70,7 @@ const Login = () => {
           <img
             src="/connect.jpg"
             alt="welcome"
-            className="object-cover w-100 h-100 rounded-lg hidden md:block"
+            className="object-cover w-full h-90 rounded-lg hidden md:block"
           />
         </div>
       </div>

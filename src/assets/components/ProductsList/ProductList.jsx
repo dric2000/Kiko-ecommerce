@@ -3,7 +3,7 @@ import productsData from "../../../productsData.json";
 import FilterInput from "../FilterInput/FilterInput";
 import ProductItem from "../ProductItem/ProductItem.jsx";
 
-const ProductList = () => {
+const ProductList = ({ handleAddProduct }) => {
   const categories = ["Tops", "Pants", "Dresses", "Outerwear", "Skirts"];
   const availibilities = ["IN_STOCK", "OUT_OF_STOCK"];
   const [searchProductName, setSearchProductName] = useState("");
@@ -63,6 +63,7 @@ const ProductList = () => {
               availability={product.availability}
               stars={product.stars}
               image={product.image_url}
+              handleAddProduct={handleAddProduct}
             />
           ))}
         </div>

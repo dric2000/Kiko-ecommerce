@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ userName }) => {
+const Navbar = ({ userName, numberOfProducts }) => {
   const navigate = useNavigate();
   return (
     <div className="flex md:flex-row gap-50 items-center md:justify-between">
@@ -30,9 +30,11 @@ const Navbar = ({ userName }) => {
             <circle cx="19" cy="21" r="1" />
             <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
           </svg>
-          <span className="absolute -top-2 -right-2 text-gray-200 font-bold text-sm bg-red-400 rounded-full px-2 py-0.5 ">
-            3
-          </span>
+          {numberOfProducts > 0 && (
+            <span className="absolute -top-2 -right-2 text-gray-200 font-bold text-sm bg-red-400 rounded-full px-2 py-0.5 ">
+              {numberOfProducts}
+            </span>
+          )}
         </div>
         <div className="w-1 h-8 bg-[#FFC8BE]"></div>
         <div className="flex items-center gap-2">
