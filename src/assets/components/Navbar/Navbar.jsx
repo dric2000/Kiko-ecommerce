@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = ({ userName, numberOfProducts }) => {
   const navigate = useNavigate();
   return (
-    <div className="flex md:flex-row gap-50 items-center md:justify-between">
+    <div className="flex md:flex-row gap-28 items-center md:justify-between">
       <div className="flex gap-3 items-center">
         <img src="/myLogo.png " alt="" className="w-15 h-15" />
         <div className="flex flex-col">

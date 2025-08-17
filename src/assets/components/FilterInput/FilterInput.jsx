@@ -16,13 +16,13 @@ const FilterInput = ({
         value={searchProductName}
         onChange={handleSearchChange}
         placeholder="Nom de produit"
-        className="w-100 h-10 md:w-60 rounded-md pl-2 border-2 bg-gray-800 border-[#FFC8BE] focus:outline-none focus:border-[#FF9B87]"
+        className="w-90 h-10 md:w-60 rounded-md pl-2 border-2 bg-gray-800 border-[#FFC8BE] focus:outline-none focus:border-[#FF9B87]"
       />
 
       <select
         value={searchCategory}
         onChange={handleCategoryChange}
-        className="w-100 h-10 md:w-60 rounded-md pl-2 border-2 bg-gray-800 border-[#FFC8BE] focus:outline-none focus:border-[#FF9B87]"
+        className="w-90 h-10 md:w-60 rounded-md pl-2 border-2 bg-gray-800 border-[#FFC8BE] focus:outline-none focus:border-[#FF9B87]"
       >
         <option value="">Catégories</option>
         {categories.map((category, index) => (
@@ -35,7 +35,7 @@ const FilterInput = ({
       <select
         value={searchAvailibility}
         onChange={handleAvailibilityChange}
-        className="w-100 h-10 md:w-60 rounded-md pl-2 border-2 bg-gray-800 border-[#FFC8BE] focus:outline-none focus:border-[#FF9B87]"
+        className="w-90 h-10 md:w-60 rounded-md pl-2 border-2 bg-gray-800 border-[#FFC8BE] focus:outline-none focus:border-[#FF9B87]"
       >
         <option value="">Disponibilités</option>
         {availibilities.map((available, index) => (
