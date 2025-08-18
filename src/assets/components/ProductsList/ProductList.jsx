@@ -38,7 +38,7 @@ const ProductList = ({ handleAddProduct }) => {
   }
 
   return (
-    <div className="flex flex-col gap-6 md:gap-10 w-full">
+    <div className="flex flex-col gap-6 md:gap-10 md:p-30 w-full">
       <h1 className="text-2xl md:text-3xl font-bold ">Liste des produits</h1>
       <FilterInput
         searchProductNamme={searchProductName}
@@ -51,7 +51,7 @@ const ProductList = ({ handleAddProduct }) => {
         handleAvailibilityChange={handleAvailibilityChange}
       />
       <div className="flex flex-col">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {filteredProducts.map((product) => (
             <ProductItem
               key={product.id}

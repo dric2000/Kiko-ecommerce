@@ -6,7 +6,7 @@ const Products = ({ numberOfProducts, handleAddProduct }) => {
   const location = useLocation();
   const userName = location.state.name;
   return (
-    <div className="flex flex-col gap-10 p-5 md:p-20 min-h-screen">
+    <div className="flex flex-col gap-10 p-5 md:p-10 min-h-screen">
       <Navbar userName={userName} numberOfProducts={numberOfProducts} />
       <ProductList
         numberOfProducts={numberOfProducts}

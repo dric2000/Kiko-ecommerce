@@ -2,7 +2,7 @@ const ProductItemDetails = ({ image, price, description, name, category }) => {
   return (
     <div className="flex flex-col gap-10 p-5">
       <div>
-        <h1 className="text-3xl font-bold">Jordan Air 4</h1>
+        <h1 className="text-3xl font-bold">{name}</h1>
       </div>
       <div className="flex flex-col md:flex-row gap-5">
         <div className="w-full md:w-1/2">
