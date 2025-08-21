@@ -1,5 +1,5 @@
-import { useState } from "react";
-import productsData from "../../../productsData.json";
+import { useContext, useState } from "react";
+import { ProductsContext } from "../../context/ProductsContext.jsx";
 import FilterInput from "../FilterInput/FilterInput";
 import ProductItem from "../ProductItem/ProductItem.jsx";
 
@@ -19,19 +19,20 @@ const ProductList = ({ handleAddProduct }) => {
     setSearchAvailibility(e.target.value);
   };
 
-  let filteredProducts = productsData.products;
+  const { products } = useContext(ProductsContext);
+  let filteredProducts = Array.isArray(products) ? products : [];
 
   if (searchProductName) {
-    filteredProducts = productsData.products.filter((product) =>
+    filteredProducts = filteredProducts.filter((product) =>
       product.name.toLowerCase().includes(searchProductName.toLowerCase())
     );
   } else if (searchCategory) {
-    filteredProducts = productsData.products.filter(
+    filteredProducts = filteredProducts.filter(
       (product) =>
         product.category.toLowerCase() === searchCategory.toLowerCase()
     );
   } else if (searchAvailibility) {
-    filteredProducts = productsData.products.filter(
+    filteredProducts = filteredProducts.filter(
       (product) =>
         product.availability.toLowerCase() === searchAvailibility.toLowerCase()
     );
@@ -56,13 +57,6 @@ const ProductList = ({ handleAddProduct }) => {
             <ProductItem
               key={product.id}
               id={product.id}
-              nom={product.name}
-              category={product.category}
-              price={product.price}
-              description={product.description}
-              availability={product.availability}
-              stars={product.stars}
-              image={product.image_url}
               handleAddProduct={handleAddProduct}
             />
           ))}

@@ -1,26 +1,33 @@
-const ProductItemDetails = ({ image, price, description, name, category }) => {
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { ProductsContext } from "../../context/ProductsContext";
+
+const ProductItemDetails = () => {
+  const { id } = useParams();
+  const { products } = useContext(ProductsContext);
+  const product = products.find((prdt) => prdt.id === Number(id));
   return (
     <div className="flex flex-col gap-10 p-5">
       <div>
-        <h1 className="text-3xl font-bold">{name}</h1>
+        <h1 className="text-3xl font-bold">{product.name}</h1>
       </div>
       <div className="flex flex-col md:flex-row gap-5">
         <div className="w-full md:w-1/2">
           <img
             className="w-full h-auto md:h-150 object-cover rounded-md "
-            src={image}
+            src={product.image_url}
             alt=""
           />
         </div>
         <div className="w-full md:w-1/2 flex flex-col gap-5">
           <div className="flex flex-col gap-5">
-            <span className="text-gray-300">{category}</span>
-            <h1 className="text-3xl font-bold"> {name} </h1>
+            <span className="text-gray-300">{product.category}</span>
+            <h1 className="text-3xl font-bold"> {product.name} </h1>
           </div>
           <div className="border-b-2 border-[#FFC8BE] w-20"></div>
           <div className="w-full md:w-150 flex flex-col gap-15">
-            <h1 className="text-2xl font-bold"> {price} </h1>
-            <p className="text-[20px] ">{description}</p>
+            <h1 className="text-2xl font-bold"> {product.price} </h1>
+            <p className="text-[20px] ">{product.description}</p>
             <div className="flex flex-col gap-8">
               <h2 className="text-2xl ">Tailles disponibles</h2>
               <div className="flex gap-3 items-center">

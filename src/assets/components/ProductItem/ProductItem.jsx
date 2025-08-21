@@ -1,35 +1,21 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ProductsContext } from "../../context/ProductsContext";
 
-const ProductItem = ({
-  id,
-  nom,
-  category,
-  image,
-  price,
-  stars,
-  availability,
-  description,
-  handleAddProduct,
-}) => {
+const ProductItem = ({ id, handleAddProduct }) => {
+  const { products } = useContext(ProductsContext);
+  const product = products.find((prdt) => prdt.id === Number(id));
   const navigate = useNavigate();
   const handleClick = (e) => {
     e.preventDefault();
-    navigate(`/productDetails/${id}`, {
-      state: {
-        image: image,
-        name: nom,
-        category: category,
-        price: price,
-        description: description,
-      },
-    });
+    navigate(`/productDetails/${id}`);
   };
   return (
     <div className="flex flex-col relative rounded-md w-90 p-5 shadow-xl/20 bg-gray-600 hover:border-4 hover:border-[#FFC8BE] transition-all duration-300 group">
       <div>
         <div>
           <img
-            src={image}
+            src={product.image_url}
             className="w-full h-70 object-cover rounded-md transform transition-transform duration-300 group-hover:scale-110"
           />
         </div>
@@ -40,13 +26,16 @@ const ProductItem = ({
           {/* Nom, catégorie et prix */}
           <div className="flex flex-col">
             <a href="" onClick={handleClick} className="text-xl font-bold">
-              {nom}
+              {product.name}
             </a>
-            <span className="text-lg font-mono"> {category} </span>
+            <span className="text-lg font-mono"> {product.category} </span>
           </div>
           {/* Prix du produit */}
           <div>
-            <h1 className="text-xl font-bold text-[#FFC8BE]"> {price} € </h1>
+            <h1 className="text-xl font-bold text-[#FFC8BE]">
+              {" "}
+              {product.price} €{" "}
+            </h1>
           </div>
         </div>
       </div>
@@ -54,16 +43,18 @@ const ProductItem = ({
       <div>
         <h2 className="text-3xl font-bold text-[#FFC8BE]">
           {" "}
-          {"*".repeat(stars)}{" "}
+          {"*".repeat(product.stars)}{" "}
         </h2>
       </div>
       {/* Statut de disponibilité */}
       <span
         className={`absolute bottom-0 right-0 mr-5 mb-5 ${
-          availability === "IN_STOCK" ? "bg-green-200" : "bg-red-400 text-white"
+          product.availability === "IN_STOCK"
+            ? "bg-green-200"
+            : "bg-red-400 text-white"
         } p-2 rounded-md text-gray-700 font-bold text-sm`}
       >
-        {availability}
+        {product.availability}
       </span>
       <button
         className="absolute bottom-5 left-1/2 -translate-x-1/2 
